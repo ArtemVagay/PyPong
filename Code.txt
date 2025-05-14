@@ -2,7 +2,7 @@ import random
 import sys
 import math
 import time
-#!binbash
+#!/bin/bash
 
 import pygame
 import os
@@ -14,25 +14,25 @@ rotateangle = 0
 screen = pygame.display.set_mode((1000, 600))
 surface = pygame.Surface((screen.get_width(), screen.get_height()), pygame.SRCALPHA)
 clock = pygame.time.Clock()
-circle_x = screen.get_width()  2
-circle_y = screen.get_height()  2
+circle_x = screen.get_width() // 2
+circle_y = screen.get_height() // 2
 posy = circle_y
-rect_x = screen.get_width()  40
-rect_y = screen.get_height()  5
-badrect_x = screen.get_width()  1.035
-badrect_y = screen.get_height()  5
-rect_sizeX = screen.get_width()  80
-rect_sizeY = screen.get_height()  3
-playrect_y = screen.get_height() 8
-playrect_x = screen.get_width()  2.5
-shoprect_y = screen.get_height()  3
-playrect_size = screen.get_width()  5, screen.get_height()  8
-marketrect_x = screen.get_width()  12
-marketrect_y = screen.get_height()  10
-marketrectx_size = screen.get_width()  1.2
-marketrecty_size = screen.get_height()  1.25
-countdown_x = screen.get_width()  2.3
-countdown_y = screen.get_height()  4
+rect_x = screen.get_width() // 40
+rect_y = screen.get_height() // 5
+badrect_x = screen.get_width() // 1.035
+badrect_y = screen.get_height() // 5
+rect_sizeX = screen.get_width() // 80
+rect_sizeY = screen.get_height() // 3
+playrect_y = screen.get_height()// 8
+playrect_x = screen.get_width() // 2.5
+shoprect_y = screen.get_height() // 3
+playrect_size = screen.get_width() // 5, screen.get_height() // 8
+marketrect_x = screen.get_width() // 12
+marketrect_y = screen.get_height() // 10
+marketrectx_size = screen.get_width() // 1.2
+marketrecty_size = screen.get_height() // 1.25
+countdown_x = screen.get_width() // 2.3
+countdown_y = screen.get_height() // 4
 trailMax = []
 display = 1
 White = (255, 255, 255)
@@ -40,8 +40,8 @@ Black = (0, 0, 0)
 
 countdown = 3
 Timer = 1
-Size = screen.get_height()  3
-CounterSize = screen.get_height()  8
+Size = screen.get_height() // 3
+CounterSize = screen.get_height() // 8
 PlayerCounter = 0
 BadCounter = 0
 timer = 0
@@ -60,44 +60,44 @@ costrects = []
 colbuy = [(0, 255, 0), (0, 0, 255), (123, 145, 123), (200, 145, 200), (156, 200, 122), (75, 178, 150), Black]
 shopbuy = []
 
-CounterFont = pygame.font.Font(pheivrit.ttf, CounterSize)
+CounterFont = pygame.font.Font("pheivrit.ttf", CounterSize)
 PlayerCounterText = CounterFont.render(str(PlayerCounter), True, Black)
 BadCounterText = CounterFont.render(str(BadCounter), True, Black)
-font = pygame.font.Font(Comic Sans MS.ttf, playrect_size[0]  4)
-countdown_font = pygame.font.Font(pheivrit.ttf, Size)
-cost_font = pygame.font.Font(pheivrit.ttf, Size  6)
+font = pygame.font.Font("Comic Sans MS.ttf", playrect_size[0] // 4)
+countdown_font = pygame.font.Font("pheivrit.ttf", Size)
+cost_font = pygame.font.Font("pheivrit.ttf", Size // 6)
 play = font.render('Play', True, White)
 shop = font.render('Shop', True, White)
 greencolcost = cost_font.render(str(5), True, Black)
 countdown_text = countdown_font.render(str(countdown), True, Black)
-settings_font = pygame.font.Font(Comic Sans MS.ttf, screen.get_width()  70)
+settings_font = pygame.font.Font("Comic Sans MS.ttf", screen.get_width() // 70)
 settings_text = settings_font.render('tap ESC to exit from settings', True, White)
 color_text = font.render('White', True, Black)
 
 
-settings_image = pygame.image.load('imagessettings.png').convert()
-settings_image = pygame.transform.scale(settings_image, (screen.get_width()  15, screen.get_width()  15))
+settings_image = pygame.image.load('images/settings.png').convert()
+settings_image = pygame.transform.scale(settings_image, (screen.get_width() // 15, screen.get_width() // 15))
 settings_image.set_colorkey(Black)
 settings_image1 = settings_image
 settings_rect = settings_image.get_rect()
-cancel_image = pygame.image.load('imagescancel.png').convert()
-cancel_image = pygame.transform.scale(cancel_image, (screen.get_width()  15, screen.get_width()  15))
+cancel_image = pygame.image.load('images/cancel.png').convert()
+cancel_image = pygame.transform.scale(cancel_image, (screen.get_width() // 15, screen.get_width() // 15))
 cancel_image.set_colorkey(Black)
 
 playrect = pygame.Rect((playrect_x, playrect_y), playrect_size)
 shoprect = pygame.Rect((playrect_x, shoprect_y), playrect_size)
-greencost = pygame.Rect((screen.get_height()  5, screen.get_width()  7), (screen.get_height()  6, screen.get_width()  25))
-settings_rect.centerx = screen.get_width()  40
-settings_rect.centery = screen.get_height()  40
+greencost = pygame.Rect((screen.get_height() // 5, screen.get_width() // 7), (screen.get_height() // 6, screen.get_width() // 25))
+settings_rect.centerx = screen.get_width() // 40
+settings_rect.centery = screen.get_height() // 40
 
 settings_table_get = False
 settings_table_out = False
-settings_table_scaleX = screen.get_width()  3
+settings_table_scaleX = screen.get_width() // 3
 settings_table_scaleY = screen.get_height()
 settings_table_x = 0 - settings_table_scaleX
 settings_table_y = 0
-manage_color_x = settings_table_x + screen.get_width()  30
-manage_color_y = screen.get_height()  20
+manage_color_x = settings_table_x + screen.get_width() // 30
+manage_color_y = screen.get_height() // 20
 manage_color_rect = pygame.rect.Rect((manage_color_x, manage_color_y), playrect_size)
 rect_speed = 10
 badrect_speed = 2
@@ -108,7 +108,7 @@ go = True
 NeedGo = badrect_y
 timur = 3300
 
-Level = Hard
+Level = "Hard"
 fircol = 0
 seccol = 0
 thicol = 0
@@ -120,20 +120,20 @@ shopbuy4 = False
 shopbuy5 = False
 shopbuy6 = False
 shopbuy7 = False
-Game = pygame.mixer.Sound(game.mp3)
+Game = pygame.mixer.Sound("game.mp3")
 
 
 IsBlack = 1
-def take()
+def take():
     global user, PlayerCounter, BallColor, shopbuy, seccol, thicol, fircol, shopbuy1, shopbuy2, shopbuy3, shopbuy4, shopbuy5, shopbuy6, shopbuy7, CounterX, IsBlack
-    with open(txt.txt, r) as file
-        for line in file
+    with open("txt.txt", "r") as file:
+        for line in file:
             counter = line.split()
             color = line.split()
             buy = line.split()
             x = line.split()
             isblack = line.split()
-            user = {Counter counter, Color color, Buy buy, X x, IsBlack isblack}
+            user = {"Counter": counter, "Color": color, "Buy": buy, "X": x, "IsBlack": isblack}
             PlayerCounter = int(counter[0])
             fircol = int(color[1])
             seccol = int(color[2])
@@ -146,343 +146,343 @@ def take()
             shopbuy5 = int(buy[8])
             shopbuy6 = int(buy[9])
             shopbuy7 = int(buy[10])
-            for i in range(4, 11)
+            for i in range(4, 11):
                 shopbuy.append(bool(int(buy[i])))
             CounterX = int(x[11])
             IsBlack = int(isblack[12])
-def download()
-    try
-        with open(txt.txt, r)
+def download():
+    try:
+        with open("txt.txt", "r"):
             pass
-    except FileNotFoundError
-        with open(txt.txt, w) as file
-            file.write(Counter, Color, Buy, X, IsBlack)
-def move_circle(angle)
+    except FileNotFoundError:
+        with open("txt.txt", "w") as file:
+            file.write("Counter, Color, Buy, X, IsBlack")
+def move_circle(angle):
     global circle_x, circle_y, BadCounter, PlayerCounter, PlayerCounterText, BadCounterText, posx, posy
     angle_rad = math.radians(angle)
-    dx = speed  math.cos(angle_rad)
-    dy = speed  math.sin(angle_rad)
+    dx = speed * math.cos(angle_rad)
+    dy = speed * math.sin(angle_rad)
 
 
-    if len(trailMax)  15
+    if len(trailMax) < 15:
         trailMax.append((circle_x + dx, circle_y - dy))
-    else
+    else:
         trailMax.remove(trailMax[0])
     circle_x += dx
     circle_y -= dy
-    if len(trailMax)  15
+    if len(trailMax) < 15:
         trailMax.append((circle_x + dx, circle_y - dy))
-    else
+    else:
         trailMax.remove(trailMax[0])
-    if display == 1 and circle_y - radius = screen.get_width()  10
+    if display == 1 and circle_y - radius <= screen.get_width() // 10:
         angle = -angle
-    if display == 1 and circle_x - radius = rect_x + rect_sizeX
+    if display == 1 and circle_x - radius <= rect_x + rect_sizeX:
         angle = 180 - angle
-    if circle_x - radius = 0
-        circle_x = screen.get_width()  2
-        circle_y = screen.get_height()  2
-        BadCounter += 1  CounterX
+    if circle_x - radius <= 0:
+        circle_x = screen.get_width() // 2
+        circle_y = screen.get_height() // 2
+        BadCounter += 1 * CounterX
         BadCounterText = CounterFont.render(str(BadCounter), True, (0, 0, 0))
-        if random.randint(0, 100) = 50
+        if random.randint(0, 100) >= 50:
             angle = 288
-        else
+        else:
             angle = 180 - angle
-    elif circle_x + radius = screen.get_width()
-        circle_x = screen.get_width()  2
-        circle_y = screen.get_height()  2
-        PlayerCounter += 1  CounterX
+    elif circle_x + radius >= screen.get_width():
+        circle_x = screen.get_width() // 2
+        circle_y = screen.get_height() // 2
+        PlayerCounter += 1 * CounterX
         PlayerCounterText = CounterFont.render(str(PlayerCounter), True, (0, 0, 0))
         BadCounterText = CounterFont.render(str(BadCounter), True, (0, 0, 0))
-        if random.randint(0, 100) = 50
+        if random.randint(0, 100) >= 50:
             angle = 288
-        else
+        else:
             angle = 180 - angle
-    if circle_x - radius = rect_x + rect_sizeX  2 and circle_y - radius = rect_y and circle_y + radius = rect_y + rect_sizeY and display == 2
+    if circle_x - radius <= rect_x + rect_sizeX / 2 and circle_y - radius >= rect_y and circle_y + radius <= rect_y + rect_sizeY and display == 2:
         angle = 180 - angle
-        otsk = pygame.mixer.Sound(soundzvuk-udara-po-myachiku.wav)
+        otsk = pygame.mixer.Sound("sound/zvuk-udara-po-myachiku.wav")
         otsk.play()
-    elif circle_x + radius = badrect_x + rect_sizeX  2 and circle_y - radius = badrect_y and circle_y + radius = badrect_y + rect_sizeY and display == 2
+    elif circle_x + radius >= badrect_x + rect_sizeX / 2 and circle_y - radius >= badrect_y and circle_y + radius <= badrect_y + rect_sizeY and display == 2:
         angle = 180 - angle
-        otsk = pygame.mixer.Sound(soundzvuk-udara-po-myachiku.wav)
+        otsk = pygame.mixer.Sound("sound/zvuk-udara-po-myachiku.wav")
         otsk.play()
-    if display == 1
-        if circle_x - radius = rect_x + rect_sizeX  2
+    if display == 1:
+        if circle_x - radius <= rect_x + rect_sizeX / 2:
             angle = 180 - angle
-        elif circle_x + radius = badrect_x + rect_sizeX  2
+        elif circle_x + radius >= badrect_x + rect_sizeX / 2:
             angle = 180 - angle
-    if circle_y - radius = 0
+    if circle_y - radius <= 0:
         circle_y = radius
         angle = -angle
-        Go = pygame.mixer.Sound(soundzvuk-vyibora-kategorii.wav)
+        Go = pygame.mixer.Sound("sound/zvuk-vyibora-kategorii.wav")
         Go.play()
         posx = circle_x
         posy = circle_y
-        posx += (screen.get_width()  2)  math.cos(angle_rad)
-        posy += (screen.get_height()  2)  math.sin(angle_rad)
-    elif circle_y + radius = screen.get_height() and display == 2
+        posx += (screen.get_width() * 2) * math.cos(angle_rad)
+        posy += (screen.get_height() * 2) * math.sin(angle_rad)
+    elif circle_y + radius >= screen.get_height() and display == 2:
         circle_y = screen.get_height() - radius
         angle = -angle
-        Go = pygame.mixer.Sound(soundzvuk-vyibora-kategorii.wav)
+        Go = pygame.mixer.Sound("sound/zvuk-vyibora-kategorii.wav")
         Go.play()
         posx = circle_x
         posy = circle_y
-        posx += (screen.get_width()  2)  math.cos(angle_rad)
-        posy += (screen.get_height()  2)  math.sin(angle_rad)
-    elif circle_y + radius = screen.get_height() and display == 1
+        posx += (screen.get_width() * 2) * math.cos(angle_rad)
+        posy += (screen.get_height() * 2) * math.sin(angle_rad)
+    elif circle_y + radius >= screen.get_height() and display == 1:
         circle_y = screen.get_height() - radius
         angle = -angle
         posx = circle_x
         posy = circle_y
-        posx += (screen.get_width()  2)  math.cos(angle_rad)
-        posy += (screen.get_height()  2)  math.sin(angle_rad)
+        posx += (screen.get_width() * 2) * math.cos(angle_rad)
+        posy += (screen.get_height() * 2) * math.sin(angle_rad)
 
     return angle
 
-def background_rect_move(x, y)
+def background_rect_move(x, y):
     global rect_x, rect_y
-    if circle_y  y + rect_sizeY  2 and y + rect_sizeY  screen.get_height()
+    if circle_y > y + rect_sizeY // 2 and y + rect_sizeY < screen.get_height():
         y += speed
-    elif circle_y  y + rect_sizeY  2 and y  screen.get_width()  10
+    elif circle_y < y + rect_sizeY // 2 and y > screen.get_width() // 10:
         y -= speed
     return x, y
 
 
 
-def rect_move(x, y, keys)
+def rect_move(x, y, keys):
     global rect_x, rect_y
-    if keys[pygame.K_w] and y  0 or keys[pygame.K_UP] and y  0
+    if keys[pygame.K_w] and y > 0 or keys[pygame.K_UP] and y > 0:
         y -= rect_speed
-    elif keys[pygame.K_s] and y + rect_sizeY  screen.get_height() or keys[pygame.K_DOWN] and y + rect_sizeY  screen.get_height()
+    elif keys[pygame.K_s] and y + rect_sizeY < screen.get_height() or keys[pygame.K_DOWN] and y + rect_sizeY < screen.get_height():
         y += rect_speed
 
     return x, y
 
-def badrect_move(x, y)
+def badrect_move(x, y):
     global posy, go, Level, badrect_speed, NeedGo
-    if NeedGo  y + rect_sizeY and y + rect_sizeY  screen.get_height()
+    if NeedGo > y + rect_sizeY and y + rect_sizeY < screen.get_height():
         y += speed + 2
         go = False
-    elif NeedGo  y and y  0
+    elif NeedGo < y and y > 0:
         y -= speed + 2
         go = False
-    else
+    else:
         y = y
         go = True
-        if Level == Easy
-            NeedGo = random.randint((int(posy) - rect_sizeY  2)  15, int(posy))
-        elif Level == Medium
-            if random.randint(0, 100)  50
-                NeedGo = random.randint((int(posy) - rect_sizeY  2), int(posy))
-            else
-                NeedGo = int(posy) - rect_sizeY  2
-        elif Level == Hard
-            if random.randint(0, 100)  90
-                NeedGo = random.randint((int(posy) - rect_sizeY  2), int(posy))
-            else
-                NeedGo = int(posy) - rect_sizeY  2
+        if Level == "Easy":
+            NeedGo = random.randint((int(posy) - rect_sizeY // 2) // 15, int(posy))
+        elif Level == "Medium":
+            if random.randint(0, 100) > 50:
+                NeedGo = random.randint((int(posy) - rect_sizeY // 2), int(posy))
+            else:
+                NeedGo = int(posy) - rect_sizeY // 2
+        elif Level == "Hard":
+            if random.randint(0, 100) > 90:
+                NeedGo = random.randint((int(posy) - rect_sizeY // 2), int(posy))
+            else:
+                NeedGo = int(posy) - rect_sizeY // 2
     return x, y
 
 download()
 take()
 
 running = True
-while running
+while running:
     PlayerCounterText = CounterFont.render(str(PlayerCounter), True, Black)
     BadCounterText = CounterFont.render(str(BadCounter), True, Black)
     settings_text = settings_font.render('tap ESC to exit from settings', True, White)
-    play = font.render('1 на 1', True, White)
+    play = font.render('Play', True, White)
     shop = font.render('Shop', True, White)
     greencolcost = cost_font.render(str(5), True, Black)
     countdown_text = countdown_font.render(str(countdown), True, Black)
     fircol = BallColor[0]
     seccol = BallColor[1]
     thicol = BallColor[2]
-    if IsBlack == 1
+    if IsBlack == 1:
         White = (255, 255, 255)
         Black = (0, 0, 0)
         color_text = font.render('White', True, Black)
-    elif IsBlack == 0
+    elif IsBlack == 0:
         White = (0, 0, 0)
         Black = (255, 255, 255)
         color_text = font.render('Black', True, Black)
-    if shopbuy[0]
+    if shopbuy[0]:
         shopbuy1 = 1
-    if shopbuy[1]
+    if shopbuy[1]:
         shopbuy2 = 1
-    if shopbuy[2]
+    if shopbuy[2]:
         shopbuy3 = 1
-    if shopbuy[3]
+    if shopbuy[3]:
         shopbuy4 = 1
-    if shopbuy[4]
+    if shopbuy[4]:
         shopbuy5 = 1
-    if shopbuy[5]
+    if shopbuy[5]:
         shopbuy6 = 1
-    if shopbuy[6]
+    if shopbuy[6]:
         shopbuy7 = 1
     clock.tick(60)
     screen.blit(surface, (0, 0))
-    if display == 2 and countdown == 0
+    if display == 2 and countdown == 0:
         keys = pygame.key.get_pressed()
-        if keys
+        if keys:
 
             rect_x, rect_y = rect_move(rect_x, rect_y, keys)
-            if keys[pygame.K_ESCAPE]
+            if keys[pygame.K_ESCAPE]:
                 display = 1
-                circle_x = screen.get_width()  2
-                circle_y = screen.get_height()  2
-                rect_x = screen.get_width()  40
-                rect_y = screen.get_height()  5
-                badrect_x = screen.get_width()  1.035
-                badrect_y = screen.get_height()  5
+                circle_x = screen.get_width() // 2
+                circle_y = screen.get_height() // 2
+                rect_x = screen.get_width() // 40
+                rect_y = screen.get_height() // 5
+                badrect_x = screen.get_width() // 1.035
+                badrect_y = screen.get_height() // 5
                 timur = 3300
-                if PlayerCounter - BadCounter = 0
+                if PlayerCounter - BadCounter >= 0:
                     PlayerCounter -= BadCounter
                 BadCounter = 0
-    elif display == 3
+    elif display == 3:
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_ESCAPE]
+        if keys[pygame.K_ESCAPE]:
 
             display = 1
-            circle_x = screen.get_width()  2
-            circle_y = screen.get_height()  2
-            rect_x = screen.get_width()  40
-            rect_y = screen.get_height()  5
-            badrect_x = screen.get_width()  1.035
-            badrect_y = screen.get_height()  5
-            if PlayerCounter - BadCounter = 0
+            circle_x = screen.get_width() // 2
+            circle_y = screen.get_height() // 2
+            rect_x = screen.get_width() // 40
+            rect_y = screen.get_height() // 5
+            badrect_x = screen.get_width() // 1.035
+            badrect_y = screen.get_height() // 5
+            if PlayerCounter - BadCounter >= 0:
                 PlayerCounter -= BadCounter
             BadCounter = 0
-    for event in pygame.event.get()
-        if event.type == pygame.QUIT
-            user = {Counter PlayerCounter}
-            with open(txt.txt, w) as file
-                file.write(f{user['Counter']} {fircol} {seccol} {thicol} {shopbuy1} {shopbuy2} {shopbuy3} {shopbuy4} {shopbuy5} {shopbuy6} {shopbuy7} {CounterX} {IsBlack}n)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            user = {"Counter": PlayerCounter}
+            with open("txt.txt", "w") as file:
+                file.write(f"{user['Counter']} {fircol} {seccol} {thicol} {shopbuy1} {shopbuy2} {shopbuy3} {shopbuy4} {shopbuy5} {shopbuy6} {shopbuy7} {CounterX} {IsBlack}\n")
             running = False
-        if event.type == pygame.MOUSEBUTTONDOWN
-            if playrect.collidepoint(event.pos) and display == 1 and settings_table_x = 0 - screen.get_width()  30
-                circle_x = screen.get_width()  2
-                circle_y = screen.get_height()  2
-                rect_x = screen.get_width()  40
-                rect_y = screen.get_height()  5
-                badrect_x = screen.get_width()  1.035
-                badrect_y = screen.get_height()  5
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if playrect.collidepoint(event.pos) and display == 1 and settings_table_x <= 0 - screen.get_width() // 30:
+                circle_x = screen.get_width() // 2
+                circle_y = screen.get_height() // 2
+                rect_x = screen.get_width() // 40
+                rect_y = screen.get_height() // 5
+                badrect_x = screen.get_width() // 1.035
+                badrect_y = screen.get_height() // 5
                 countdown = 3
-                Size = screen.get_height()  3
+                Size = screen.get_height() // 3
                 timur = 3300
                 display = 2
-            elif shoprect.collidepoint(event.pos) and display == 1 and settings_table_x = 0 - screen.get_width()  30
+            elif shoprect.collidepoint(event.pos) and display == 1 and settings_table_x <= 0 - screen.get_width() // 30:
                 display = 3
-            elif settings_rect.collidepoint(event.pos) and display == 1 and settings_table_get == False
+            elif settings_rect.collidepoint(event.pos) and display == 1 and settings_table_get == False:
                 settings_table_get = True
                 settings_table_out = False
-            elif manage_color_rect.collidepoint(event.pos) and display == 1 and settings_table_x = 0 - screen.get_width()  30 and White == (255, 255, 255)
+            elif manage_color_rect.collidepoint(event.pos) and display == 1 and settings_table_x >= 0 - screen.get_width() // 30 and White == (255, 255, 255):
                 Black = White
                 White = (0, 0, 0)
                 IsBlack = 0
-            elif manage_color_rect.collidepoint(event.pos) and display == 1 and settings_table_x = 0 - screen.get_width()  30 and White == (0, 0, 0)
+            elif manage_color_rect.collidepoint(event.pos) and display == 1 and settings_table_x >= 0 - screen.get_width() // 30 and White == (0, 0, 0):
                 Black = White
                 White = (255, 255, 255)
                 IsBlack = 1
-            if display == 3
-                for i in range(len(shopbuy))
-                    if shopbuy[i]
+            if display == 3:
+                for i in range(len(shopbuy)):
+                    if shopbuy[i]:
                         shopcosts[i] = 'Sold'
-                for i in range(len(costrects))
+                for i in range(len(costrects)):
                     global costrect
                     costrect = pygame.Rect(costrects[i])
-                    if costrect.collidepoint(event.pos)
-                        if i  len(colbuy) and shopcosts[i] != 'Sold' and isbuy[i] = PlayerCounter and shopbuy[i] == False
+                    if costrect.collidepoint(event.pos):
+                        if i < len(colbuy) and shopcosts[i] != 'Sold' and isbuy[i] <= PlayerCounter and shopbuy[i] == False:
                             PlayerCounter -= shopcosts[i]
                             BallColor = colbuy[i]
                             shopbuy[i] = True
                             shopcosts[i] = 'Sold'
                             CounterX = ballX[i]
-                            buy = pygame.mixer.Sound(soundapple-pay-succes.mp3)
+                            buy = pygame.mixer.Sound("sound/apple-pay-succes.mp3")
                             buy.play()
 
-                        elif i  len(colbuy) and shopbuy[i] != False
+                        elif i < len(colbuy) and shopbuy[i] != False:
                             BallColor = colbuy[i]
                             CounterX = ballX[i]
-                            success = pygame.mixer.Sound(sound8af5b2bf5d19c00.mp3)
+                            success = pygame.mixer.Sound("sound/8af5b2bf5d19c00.mp3")
                             success.play()
-                        elif i  len(colbuy) and shopbuy[i] == False and isbuy[i]  PlayerCounter
-                            fail = pygame.mixer.Sound(sound__raclure__wrong.wav)
+                        elif i < len(colbuy) and shopbuy[i] == False and isbuy[i] > PlayerCounter:
+                            fail = pygame.mixer.Sound("sound/__raclure__wrong.wav")
                             fail.play()
-        if event.type == pygame.KEYDOWN
-            if event.key == pygame.K_ESCAPE and display == 1 and settings_table_out == False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE and display == 1 and settings_table_out == False:
                 settings_table_get = False
                 settings_table_out = True
-            elif event.key == pygame.K_r
-                with open(txt.txt, w) as file
+            elif event.key == pygame.K_r:
+                with open("txt.txt", "w") as file:
                     file.write(
-                        f0 255 0 0 0 0 0 0 0 0 0 1 1n)
+                        f"0 255 0 0 0 0 0 0 0 0 0 1 1\n")
                 time.sleep(0.5)
                 pygame.quit()
                 print('restart')
                 sys.exit()
 
 
-    if display == 2
+    if display == 2:
         Menu.stop()
-        if timur == 3300
-            Game = pygame.mixer.Sound(game.mp3)
+        if timur == 3300:
+            Game = pygame.mixer.Sound("game.mp3")
             Game.set_volume(0.3)
             Game.play()
             timur = 0
-        else
+        else:
             timur += 1
         screen.fill(White)
         PlayerCounterText = CounterFont.render(str(PlayerCounter), True, Black)
         BadCounterText = CounterFont.render(str(BadCounter), True, Black)
         pygame.draw.rect(screen, Black, (rect_x, rect_y, int(rect_sizeX), int(rect_sizeY)))
         pygame.draw.rect(screen, Black, (badrect_x, badrect_y, int(rect_sizeX), int(rect_sizeY)))
-        screen.blit(PlayerCounterText, (screen.get_height()  3, screen.get_width()  50))
-        screen.blit(BadCounterText, (screen.get_height()  0.8, screen.get_width()  50))
+        screen.blit(PlayerCounterText, (screen.get_height() // 3, screen.get_width() // 50))
+        screen.blit(BadCounterText, (screen.get_height() / 0.8, screen.get_width() // 50))
 
-        if Size  1 and countdown != 0
-            countdown_font = pygame.font.Font(pheivrit.ttf, Size)
+        if Size > 1 and countdown != 0:
+            countdown_font = pygame.font.Font("pheivrit.ttf", Size)
             countdown_text = countdown_font.render(str(countdown), True, Black)
             Size -= 5
-            countdown_x += 2.5  2
+            countdown_x += 2.5 / 2
             countdown_y += 2.5
             PlayerCounter = PlayerCounter
             screen.blit(countdown_text, (countdown_x, countdown_y))
-        elif Size = 1 and countdown != 0
-            countdown_x = screen.get_width()  2.3
-            countdown_y = screen.get_height()  4
-            countdown_font = pygame.font.Font(pheivrit.ttf, Size)
+        elif Size <= 1 and countdown != 0:
+            countdown_x = screen.get_width() // 2.3
+            countdown_y = screen.get_height() // 4
+            countdown_font = pygame.font.Font("pheivrit.ttf", Size)
             countdown_text = countdown_font.render(str(countdown), True, Black)
             screen.blit(countdown_text, (countdown_x, countdown_y))
             countdown -= 1
-            Size = screen.get_height()  3
-        else
+            Size = screen.get_height() // 3
+        else:
             angle = move_circle(angle)
             badrect_x, badrect_y = badrect_move(badrect_x, badrect_y)
 
-            for i in range(len(trailMax) - 1)
+            for i in range(len(trailMax) - 1):
                 pygame.draw.circle(screen, BallColor, trailMax[i], radius)
             pygame.draw.circle(screen, BallColor, (int(circle_x), int(circle_y)), radius)
 
-    elif display == 1
+    elif display == 1:
         Game.stop()
-        if timur == 3300
-            Menu = pygame.mixer.Sound(pixel-playground_92807.mp3)
+        if timur == 3300:
+            Menu = pygame.mixer.Sound("pixel-playground_92807.mp3")
             Menu.set_volume(0.3)
             Menu.play()
             timur = 0
-        else
+        else:
             timur += 1
         playrect = pygame.Rect((playrect_x, playrect_y), playrect_size)
         screen.fill(White)
         colbuy[6] = Black
         angle = move_circle(angle)
-        for i in range(len(trailMax) - 1)
+        for i in range(len(trailMax) - 1):
             pygame.draw.circle(screen, BallColor, trailMax[i], radius)
         pygame.draw.circle(screen, BallColor, (int(circle_x), int(circle_y)), radius)
-        pygame.draw.rect(screen, Black, ((playrect_x, playrect_y), playrect_size), 0, playrect_size[1]  4)
-        pygame.draw.rect(screen, Black, ((playrect_x, shoprect_y), playrect_size), 0, playrect_size[1]  4)
-        screen.blit(play, (playrect_x + playrect_size[0]  2.5 - playrect_size[0]  5, playrect_y + playrect_size[1]  3 - playrect_size[0]  8))
-        screen.blit(shop, (playrect_x + playrect_size[0]  2 - playrect_size[0]  3.5, shoprect_y + playrect_size[1]  3 - playrect_size[0]  8))
+        pygame.draw.rect(screen, Black, ((playrect_x, playrect_y), playrect_size), 0, playrect_size[1] // 4)
+        pygame.draw.rect(screen, Black, ((playrect_x, shoprect_y), playrect_size), 0, playrect_size[1] // 4)
+        screen.blit(play, (playrect_x + playrect_size[0] // 2.0 - playrect_size[0] // 5, playrect_y + playrect_size[1] // 3 - playrect_size[0] // 8))
+        screen.blit(shop, (playrect_x + playrect_size[0] // 2 - playrect_size[0] // 3.5, shoprect_y + playrect_size[1] // 3 - playrect_size[0] // 8))
         rect_x, rect_y = background_rect_move(rect_x, rect_y)
         pygame.draw.rect(screen, Black, (rect_x, rect_y, int(rect_sizeX), int(rect_sizeY)))
         pygame.draw.rect(screen, Black, (badrect_x, rect_y, int(rect_sizeX), int(rect_sizeY)))
@@ -490,79 +490,79 @@ while running
         rotateangle += 1
         settings_image = pygame.transform.rotate(settings_image1, rotateangle)
         settings_rect = settings_image.get_rect()
-        settings_rect.centerx = screen.get_height()  15
-        settings_rect.centery = screen.get_width()  25
-        pygame.draw.rect(screen, Black, (settings_table_x, settings_table_y, settings_table_scaleX, settings_table_scaleY), 0, 0,0,screen.get_width()  30, 0, screen.get_width()  30)
-        screen.blit(settings_text, (settings_table_x + screen.get_width()  20, screen.get_height()  30))
-        manage_color_x = settings_table_x + screen.get_width()  20
-        manage_color_y = screen.get_height()  10
+        settings_rect.centerx = screen.get_height() // 15
+        settings_rect.centery = screen.get_width() // 25
+        pygame.draw.rect(screen, Black, (settings_table_x, settings_table_y, settings_table_scaleX, settings_table_scaleY), 0, 0,0,screen.get_width() // 30, 0, screen.get_width() // 30)
+        screen.blit(settings_text, (settings_table_x + screen.get_width() // 20, screen.get_height() // 30))
+        manage_color_x = settings_table_x + screen.get_width() // 20
+        manage_color_y = screen.get_height() // 10
         manage_color_rect = pygame.rect.Rect((manage_color_x, manage_color_y), playrect_size)
-        pygame.draw.rect(screen, White, (manage_color_x, manage_color_y, playrect_size[0], playrect_size[1]), 0, screen.get_width()  50)
-        screen.blit(color_text, (manage_color_x + screen.get_width()  50, manage_color_y))
-        if settings_table_get
-            if settings_table_x = 0 - screen.get_width()  30
-                settings_table_x += screen.get_width()  30
+        pygame.draw.rect(screen, White, (manage_color_x, manage_color_y, playrect_size[0], playrect_size[1]), 0, screen.get_width() // 50)
+        screen.blit(color_text, (manage_color_x + screen.get_width() // 50, manage_color_y))
+        if settings_table_get:
+            if settings_table_x <= 0 - screen.get_width() // 30:
+                settings_table_x += screen.get_width() // 30
 
-            else
+            else:
                 settings_table_get = False
-        if settings_table_out
-            if settings_table_x = 0 - settings_table_scaleX
-                settings_table_x -= screen.get_width()  30
-            else
+        if settings_table_out:
+            if settings_table_x >= 0 - settings_table_scaleX:
+                settings_table_x -= screen.get_width() // 30
+            else:
                 settings_table_out = False
-    elif display == 3
-        if timur == 3300
-            Menu = pygame.mixer.Sound(pixel-playground_92807.mp3)
+    elif display == 3:
+        if timur == 3300:
+            Menu = pygame.mixer.Sound("pixel-playground_92807.mp3")
             Menu.set_volume(0.3)
             Menu.play()
             timur = 0
-        else
+        else:
             timur += 1
         screen.fill(White)
         pygame.draw.rect(screen, Black, (marketrect_x, marketrect_y, marketrectx_size, marketrecty_size), 0, 5)
         nextStroke = 5
 
-        for i in range(len(shopcosts))
+        for i in range(len(shopcosts)):
             cost = cost_font.render(str(shopcosts[i]), True, Black)
             isbuy.append(shopcosts[i])
 
-            costrects.append((((screen.get_height()  5) + (screen.get_height()  3.85)  i, screen.get_width()  7), (screen.get_height()  6, screen.get_width()  25)))
-            if costrects.index(costrects[i])  4
+            costrects.append((((screen.get_height() // 5) + (screen.get_height() // 3.85) * i, screen.get_width() // 7), (screen.get_height() // 6, screen.get_width() // 25)))
+            if costrects.index(costrects[i]) > 4:
                 pygame.draw.rect(screen, White, ((
-                                                                   screen.get_height()  5) + (
-                                                                   screen.get_height()  3.85)  (i - 5),
-                                                           screen.get_width()  4, screen.get_height()  6,
-                                                           screen.get_width()  25), 0,
-                                 screen.get_height()  70)
-                costrects[i] = (((screen.get_height()  5) + (screen.get_height()  3.85)  (i - 5), screen.get_width()  4), (screen.get_height()  6, screen.get_width()  25))
+                                                                   screen.get_height() // 5) + (
+                                                                   screen.get_height() // 3.85) * (i - 5),
+                                                           screen.get_width() // 4, screen.get_height() // 6,
+                                                           screen.get_width() // 25), 0,
+                                 screen.get_height() // 70)
+                costrects[i] = (((screen.get_height() // 5) + (screen.get_height() // 3.85) * (i - 5), screen.get_width() // 4), (screen.get_height() // 6, screen.get_width() // 25))
                 screen.blit(cost,
-                            ((screen.get_height()  4.8) + (screen.get_height()  4)  (i - 5), screen.get_width()  4))
+                            ((screen.get_height() // 4.8) + (screen.get_height() // 4) * (i - 5), screen.get_width() // 4))
 
-            else
+            else:
                 pygame.draw.rect(screen, White, ((
-                                                                    screen.get_height()  5) + (
-                                                                    screen.get_height()  3.85)  i,
-                                                            screen.get_width()  7, screen.get_height()  6,
-                                                            screen.get_width()  25), 0,
-                                     screen.get_height()  70)
-                screen.blit(cost, ((screen.get_height()  3.8) + (screen.get_height()  4)  i, screen.get_width()  7))
-            for i in range(len(colbuy))
-                if colbuy.index(colbuy[i])  4
+                                                                    screen.get_height() // 5) + (
+                                                                    screen.get_height() // 3.85) * i,
+                                                            screen.get_width() // 7, screen.get_height() // 6,
+                                                            screen.get_width() // 25), 0,
+                                     screen.get_height() // 70)
+                screen.blit(cost, ((screen.get_height() // 3.8) + (screen.get_height() // 4) * i, screen.get_width() // 7))
+            for i in range(len(colbuy)):
+                if colbuy.index(colbuy[i]) > 4:
                     pygame.draw.circle(screen, White, (
-                    (screen.get_height()  3.5) + (screen.get_height()  3.85)  (i - 5), screen.get_width()  4.5),
-                                        radius + screen.get_width()  200)
+                    (screen.get_height() // 3.5) + (screen.get_height() // 3.85) * (i - 5), screen.get_width() // 4.5),
+                                        radius + screen.get_width() // 200)
 
                     pygame.draw.circle(screen, colbuy[i], (
-                    (screen.get_height()  3.5) + (screen.get_height()  3.85)  (i - 5), screen.get_width()  4.5), radius)
-                else
+                    (screen.get_height() // 3.5) + (screen.get_height() // 3.85) * (i - 5), screen.get_width() // 4.5), radius)
+                else:
                     pygame.draw.circle(screen, White, (
-                        (screen.get_height()  3.5) + (screen.get_height()  3.85)  i,
-                        screen.get_width()  8),
-                                        radius + screen.get_width()  200)
+                        (screen.get_height() // 3.5) + (screen.get_height() // 3.85) * i,
+                        screen.get_width() // 8),
+                                        radius + screen.get_width() // 200)
 
                     pygame.draw.circle(screen, colbuy[i], (
-                        (screen.get_height()  3.5) + (screen.get_height()  3.85)  i,
-                        screen.get_width()  8), radius)
+                        (screen.get_height() // 3.5) + (screen.get_height() // 3.85) * i,
+                        screen.get_width() // 8), radius)
 
     pygame.display.flip()
 
